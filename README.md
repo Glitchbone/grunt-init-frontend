@@ -24,7 +24,7 @@ and follow the prompts:**
 grunt-init frontend
 ```
 
-*Install npm dependencies:*
+**Install npm dependencies:**
 
 ```sh
 npm install
@@ -45,7 +45,7 @@ The following modules will be installed:
 + [grunt-bower-concat](https://npmjs.org/package/grunt-bower-concat)
 + [grunt-favicons](https://npmjs.org/package/grunt-favicons)
 
-*Install Bower dependencies:*
+**Install Bower dependencies:**
 
 ```sh
 bower install
@@ -64,7 +64,7 @@ The following libraries will be installed and ready to use:
 + [normalize.css](http://necolas.github.io/normalize.css/)
 + [LESS Hat](https://github.com/madebysource/lesshat)
 
-*You can now run the Grunt tasks (The default task will launch a webserver):*
+**You can now run the Grunt tasks (The default task will launch a webserver):**
 
 ```sh
 grunt build
