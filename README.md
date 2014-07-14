@@ -4,10 +4,10 @@
 [grunt-init]: http://gruntjs.com/project-scaffolding
 
 ### Installation
-If you haven't already done so, install [Grunt][grunt], [grunt-init][] and [Bower][bower]:
+If you haven't already done so, install [grunt][], [grunt-init][] and [Bower][bower]:
 
 ``` bash
-npm i -g grunt-cli grunt-init bower
+npm install -g grunt-cli grunt-init bower
 ```
 
 Once [grunt-init][] is installed, place this template in your `~/.grunt-init/` directory. It's recommended that you use `git clone` to install this template into that directory as follows:
