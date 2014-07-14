@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
         config: {
-            "buildPath": "www",
+            "buildPath": "{%= build_path %}",
             "tplPath": "src/templates",
             "tplExt": ".hbs"
         },
