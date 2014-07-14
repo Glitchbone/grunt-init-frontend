@@ -17,8 +17,8 @@ git clone git://github.com/Glitchbone/grunt-init-frontend.git ~/.grunt-init/fron
 ```
 
 ## Usage
-*At the command-line, change into an empty directory, run this command
-and follow the prompts:*
+**At the command-line, change into an empty directory, run this command
+and follow the prompts:**
 
 ```sh
 grunt-init frontend
