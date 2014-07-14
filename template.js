@@ -59,6 +59,12 @@ exports.template = function(grunt, init, done) {
 
             // Actually copy (and process) files.
             init.copyAndProcess(files, props);
+            
+            // Create empty directories
+            grunt.file.mkdir('src/assets/files');
+            grunt.file.mkdir('src/assets/fonts');
+            grunt.file.mkdir('src/assets/img');
+            grunt.file.mkdir('src/templates');
 
             // Generate package.json file.
             init.writePackageJSON('package.json', props);

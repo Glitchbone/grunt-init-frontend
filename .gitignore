@@ -10,5 +10,8 @@ node_modules/
 # ignore bower_components
 bower_components/
 
-# ignore build folder
-www/
+# ignore development folder
+root/www/
+root/bower_components/
+root/node_modules/
+root/package.json
