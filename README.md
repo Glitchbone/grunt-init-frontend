@@ -3,7 +3,7 @@
 
 [grunt-init]: http://gruntjs.com/project-scaffolding
 
-### Installation
+## Installation
 If you haven't already done so, install [grunt][], [grunt-init][] and [Bower][bower]:
 
 ```sh
@@ -68,9 +68,6 @@ You can now run the Grunt tasks (The default task will launch a webserver):
 
 ```sh
 grunt build
-```
-
-```sh
 grunt
 ```
 
