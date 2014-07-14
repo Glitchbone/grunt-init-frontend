@@ -1,0 +1,31 @@
+{
+    "name": "grunt-init-frontend",
+    "version": "0.1.0",
+    "description": "Initialize Web projects.",
+    "author": {
+        "name": "Adrien Glitchbone",
+        "url": "https://github.com/Glitchbone"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Glitchbone/grunt-init-frontend.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Glitchbone/grunt-init-frontend/issues"
+    },
+    "main": "template.js",
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "grunt": "~0.4.1"
+    },
+    "keywords": [
+        "grunt init",
+        "grunt plugin",
+        "grunt task",
+        "grunt templates",
+        "handlebars",
+        "init"
+    ]
+}

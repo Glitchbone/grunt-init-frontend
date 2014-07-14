@@ -1,0 +1,14 @@
+# ignore .DS_Store files and some other stuff
+.DS_Store
+
+.idea/
+.tmproj
+
+# ignore node_modules
+node_modules/
+
+# ignore bower_components
+bower_components/
+
+# ignore build folder
+www/
