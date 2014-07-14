@@ -47,7 +47,7 @@ existing files.
 **[Adrien Glitchbone](http://github.com/Glitchbone)**
 
 + [https://twitter.com/AdrienROOTabaga](https://twitter.com/AdrienROOTabaga)
-+ [http://github.com/jonschlinkert](http://github.com/Glitchbone)
++ [http://github.com/Glitchbone](http://github.com/Glitchbone)
 
 [grunt]: http://gruntjs.com
 [grunt-init]: http://gruntjs.com/project-scaffolding#installing-templates
