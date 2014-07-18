@@ -34,7 +34,7 @@ exports.template = function(grunt, init, done) {
         init.prompt('author_name'),
         init.prompt('author_email'),
         init.prompt('author_url'),
-        init.prompt('build_path')
+        init.prompt('build_path', 'www')
         ], function(err, props) {
             props.keywords = [];
             props.devDependencies = {
