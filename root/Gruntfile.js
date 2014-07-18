@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: 'src/js/**/*.js',
-                tasks: ['concat:scripts'],
+                tasks: ['concat:scripts', 'concat:main', 'uglify:scripts'],
                 options: {
                     livereload: true
                 }
@@ -51,6 +51,20 @@ module.exports = function(grunt) {
                     livereload: true
                 }
 			},
+            files: {
+                files: 'src/assets/files/**/*.*',
+                tasks: ['copy'],
+                options: {
+                    livereload: true
+                }
+            },
+            templates: {
+                files: '<%= config.tplPath %>/**/*<%= config.tplExt %>',
+				tasks: ['handlebars', 'concat:main', 'uglify:scripts'],
+                options: {
+                    livereload: true
+                }
+            },
 			img: {
 				files: 'src/assets/img/**/*.{png,jpg,gif}',
 				tasks: ['imagemin'],
@@ -275,7 +289,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    //grunt.loadNpmTasks('grunt-favicons');
     
     grunt.registerTask('default', ["handlebars", "less", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
     
