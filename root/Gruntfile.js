@@ -38,13 +38,6 @@ module.exports = function(grunt) {
                     livereload: true
                 }
             },
-            less: {
-                files: 'src/less/**/*.less',
-                tasks: ['less', 'clean'],
-                options: {
-                    livereload: true
-                }
-            },
             sass: {
                 files: 'src/sass/**/*.scss',
                 tasks: ['compass', 'cssmin:sass', 'clean'],
@@ -311,7 +304,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-bower-concat");
-    grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks("grunt-contrib-handlebars");
     grunt.loadNpmTasks("grunt-contrib-imagemin");
@@ -320,8 +312,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     
-    grunt.registerTask('default', ["handlebars", "less", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
+    grunt.registerTask('default', ["handlebars", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
     
-    grunt.registerTask('build', ["handlebars", "less", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean"]);
+    grunt.registerTask('build', ["handlebars", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean"]);
     
 };
