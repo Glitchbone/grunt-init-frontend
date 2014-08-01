@@ -39,7 +39,7 @@ The following modules will be installed:
 + [grunt-contrib-cssmin](https://npmjs.org/package/grunt-contrib-cssmin)
 + [grunt-contrib-handlebars](https://npmjs.org/package/grunt-contrib-handlebars)
 + [grunt-contrib-imagemin](https://npmjs.org/package/grunt-contrib-imagemin)
-+ [grunt-contrib-less](https://npmjs.org/package/grunt-contrib-less)
++ [grunt-contrib-compass](https://npmjs.org/package/grunt-contrib-compass)
 + [grunt-contrib-uglify](https://npmjs.org/package/grunt-contrib-uglify)
 + [grunt-contrib-watch](https://npmjs.org/package/grunt-contrib-watch)
 + [grunt-bower-concat](https://npmjs.org/package/grunt-bower-concat)
@@ -58,11 +58,11 @@ The following libraries will be installed and ready to use:
 + [consolelog](http://github.com/patik/console.log-wrapper.git)
 + [Handlebars](http://handlebarsjs.com)
 + [Font Awesome](http://fontawesome.io)
-+ [spin.js](http://fgnass.github.io/spin.js)
 + [Modernizr](http://modernizr.com/)
 + [Simple Grid](https://github.com/ThisIsDallas/Simple-Grid)
-+ [normalize.css](http://necolas.github.io/normalize.css/)
-+ [LESS Hat](https://github.com/madebysource/lesshat)
++ [FlexSlider](https://github.com/woothemes/FlexSlider)
++ [SlickNav](https://github.com/ComputerWolf/SlickNav)
++ [Magnific Popup](https://github.com/dimsemenov/Magnific-Popup)
 
 **You can now run the Grunt tasks (The default task will launch a webserver):**
 
