@@ -21,7 +21,12 @@ exports.after = 'You should now install project dependencies with _npm ' +
 'http://gruntjs.com/getting-started';
 
 // Any existing file or directory matching this wildcard will cause a warning.
-exports.warnOn = '*';
+exports.warnOn = [
+    'Gruntfile.js', 
+    'bower.json', 
+    'package.json', 
+    'src'
+];
 
 // The actual init template.
 exports.template = function(grunt, init, done) {
@@ -41,7 +46,7 @@ exports.template = function(grunt, init, done) {
                 "grunt-contrib-connect": "~0.8.0",
                 "grunt-contrib-copy": "~0.5.0",
                 "grunt-contrib-imagemin": "~0.7.1",
-                "grunt-contrib-less": "~0.11.3",
+                "grunt-contrib-compass": "~0.9.0",
                 "grunt-contrib-handlebars": "~0.8.0",
                 "grunt-contrib-concat": "~0.4.0",
                 "grunt-contrib-watch": "~0.6.1",

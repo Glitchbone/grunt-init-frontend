@@ -7,7 +7,8 @@ module.exports = function(grunt) {
         config: {
             "buildPath": "{%= build_path %}",
             "tplPath": "src/templates",
-            "tplExt": ".hbs"
+            "tplExt": ".hbs",
+            "banner": '/*! WARNING! THIS IS AN AUTO GENERATED FILE, DO NOT MODIFY! <%= pkg.name %> - <%= pkg.author.name %> - <%= grunt.template.today("yyyy-mm-dd hh:mm") %> */'
         },
         
         connect: {
@@ -32,42 +33,49 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: 'src/js/**/*.js',
-                tasks: ['concat:scripts', 'concat:main', 'uglify:scripts'],
+                tasks: ['concat:scripts', 'concat:main', 'uglify:scripts', 'clean'],
                 options: {
                     livereload: true
                 }
             },
             less: {
                 files: 'src/less/**/*.less',
-                tasks: ['less'],
+                tasks: ['less', 'clean'],
+                options: {
+                    livereload: true
+                }
+            },
+            sass: {
+                files: 'src/sass/**/*.scss',
+                tasks: ['compass', 'cssmin:sass', 'clean'],
                 options: {
                     livereload: true
                 }
             },
 			html: {
-				files: 'src/index.html',
-				tasks: ['copy:html'],
+				files: 'src/*.html',
+				tasks: ['copy:html', 'clean'],
                 options: {
                     livereload: true
                 }
 			},
             files: {
                 files: 'src/assets/files/**/*.*',
-                tasks: ['copy'],
+                tasks: ['copy', 'clean'],
                 options: {
                     livereload: true
                 }
             },
             templates: {
                 files: '<%= config.tplPath %>/**/*<%= config.tplExt %>',
-				tasks: ['handlebars', 'concat:main', 'uglify:scripts'],
+				tasks: ['handlebars', 'concat:main', 'uglify:scripts', 'clean'],
                 options: {
                     livereload: true
                 }
             },
 			img: {
 				files: 'src/assets/img/**/*.{png,jpg,gif}',
-				tasks: ['imagemin'],
+				tasks: ['imagemin', 'clean'],
                 options: {
                     livereload: true
                 }
@@ -91,23 +99,24 @@ module.exports = function(grunt) {
 			}
 		},
         
-		less: {
-			compile: {
-				options: {
-					compress: true
-				},
-				files: {
-					"<%= config.buildPath %>/css/main.min.css": "src/less/main.less"
-				}
-			}
-		},
+        compass: {
+            dist: {
+                options: {
+                    outputStyle: 'compressed',
+                    sassDir: 'src/sass',
+                    cssDir: 'tmp'
+                }
+            }
+        },
         
 		copy: {
 			html: {
 				files: [
 					{
-						src: 'src/index.html', 
-						dest: '<%= config.buildPath %>/index.html'
+                        expand: true,
+                        cwd: 'src/',
+						src: ['*.html'], 
+						dest: '<%= config.buildPath %>/'
 					}
 				]
 			},
@@ -163,7 +172,7 @@ module.exports = function(grunt) {
 					block: true,
 					line: false
 				},
-				banner: '/*! <%= pkg.name %> - <%= pkg.author %> - <%= grunt.template.today("yyyy-mm-dd hh:mm") %> */'
+				banner: '<%= config.banner %>'
 			},
 			scripts: {
 				src: [
@@ -207,10 +216,20 @@ module.exports = function(grunt) {
         },
         
         cssmin: {
-            combine: {
+            options: {
+                banner: '<%= config.banner %>'
+            },
+            vendors: {
                 files: {
                     '<%= config.buildPath %>/css/vendors.min.css': [
                         'tmp/bower.css'
+                    ]
+                }
+            },
+            sass: {
+                files: {
+                    '<%= config.buildPath %>/css/main.min.css': [
+                        'tmp/main.css'
                     ]
                 }
             }
@@ -223,25 +242,35 @@ module.exports = function(grunt) {
                     'fontawesome', 
                     'html5shiv', 
                     'modernizr', 
-                    'Simple-Grid', 
-                    'normalize.css', 
-                    'lesshat'
+                    'Simple-Grid'
                 ],
                 mainFiles: {
                     'consolelog': 'consolelog.min.js',
+                    'FlexSlider': 'jquery.flexslider-min.js',
+                    'magnific-popup': 'dist/jquery.magnific-popup.js',
+                    'slicknav': 'jquery.slicknav.min.js'
+                },
+                dependencies: {
+                    'FlexSlider': 'jquery',
+                    'magnific-popup': 'jquery',
+                    'slicknav': 'jquery'
                 }
             },
             css: {
                 dest: 'tmp/bower.css',
                 include: [
-                    'normalize.css', 
                     'fontawesome', 
-                    'Simple-Grid'
+                    'Simple-Grid',
+                    'FlexSlider',
+                    'magnific-popup',
+                    'slicknav'
                 ],
                 mainFiles: {
-                    'normalize.css': 'normalize.css',
                     'fontawesome': 'css/font-awesome.min.css',
-                    'Simple-Grid': 'simplegrid.css'
+                    'Simple-Grid': 'simplegrid.css',
+                    'FlexSlider': 'flexslider.css',
+                    'magnific-popup': 'dist/magnific-popup.css',
+                    'slicknav': 'slicknav.css'
                 }
             }
         },
@@ -283,6 +312,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-bower-concat");
     grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks("grunt-contrib-handlebars");
     grunt.loadNpmTasks("grunt-contrib-imagemin");
     grunt.loadNpmTasks("grunt-contrib-copy");
@@ -290,8 +320,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     
-    grunt.registerTask('default', ["handlebars", "less", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
+    grunt.registerTask('default', ["handlebars", "less", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
     
-    grunt.registerTask('build', ["handlebars", "less", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean"]);
+    grunt.registerTask('build', ["handlebars", "less", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean"]);
     
 };
