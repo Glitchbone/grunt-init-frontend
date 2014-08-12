@@ -33,7 +33,6 @@ npm install
 The following modules will be installed:
 
 + [grunt-contrib-clean](https://npmjs.org/package/grunt-contrib-clean)
-+ [grunt-contrib-concat](https://npmjs.org/package/grunt-contrib-concat)
 + [grunt-contrib-connect](https://npmjs.org/package/grunt-contrib-connect)
 + [grunt-contrib-copy](https://npmjs.org/package/grunt-contrib-copy)
 + [grunt-contrib-cssmin](https://npmjs.org/package/grunt-contrib-cssmin)
@@ -42,6 +41,7 @@ The following modules will be installed:
 + [grunt-contrib-compass](https://npmjs.org/package/grunt-contrib-compass)
 + [grunt-contrib-uglify](https://npmjs.org/package/grunt-contrib-uglify)
 + [grunt-contrib-watch](https://npmjs.org/package/grunt-contrib-watch)
++ [grunt-bower-concat](https://npmjs.org/package/grunt-bower-concat)
 + [grunt-favicons](https://npmjs.org/package/grunt-favicons)
 
 **Install Bower dependencies:**
