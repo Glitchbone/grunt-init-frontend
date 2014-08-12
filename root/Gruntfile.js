@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: 'src/js/**/*.js',
-                tasks: ['concat:scripts', 'concat:main', 'uglify:scripts', 'clean'],
+                tasks: ['uglify:scripts', 'clean'],
                 options: {
                     livereload: true
                 }
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
             },
             templates: {
                 files: '<%= config.tplPath %>/**/*<%= config.tplExt %>',
-				tasks: ['handlebars', 'concat:main', 'uglify:scripts', 'clean'],
+				tasks: ['handlebars', 'uglify:scripts', 'clean'],
                 options: {
                     livereload: true
                 }
@@ -158,36 +158,6 @@ module.exports = function(grunt) {
             }
 		},
         
-		concat: {
-			options: {
-				separator: ';',
-				stripBanners: {
-					block: true,
-					line: false
-				},
-				banner: '<%= config.banner %>'
-			},
-			scripts: {
-				src: [
-                    'src/js/**/*.js'
-				],
-				dest: 'tmp/main.js'
-			},
-			main: {
-				src: [
-                    'tmp/templates.js', 
-                    'tmp/main.js'
-				],
-				dest: '<%= config.buildPath %>/js/main.js'
-			},
-			css: {
-				src: [
-                    'tmp/bower.css'
-				],
-				dest: '<%= config.buildPath %>/css/vendors.css'
-			}
-		},
-        
         uglify: {
             options: {
                 mangle: false
@@ -195,14 +165,15 @@ module.exports = function(grunt) {
             scripts: {
                 files: {
                     '<%= config.buildPath %>/js/main.min.js': [
-                        '<%= config.buildPath %>/js/main.js'
+                        'tmp/templates.js',
+                        'src/js/**/*.js'
                     ]
                 }
             },
             vendors: {
                 files: {
                     '<%= config.buildPath %>/js/vendors.min.js': [
-                        '<%= config.buildPath %>/js/vendors.js'
+                        'tmp/vendors.js'
                     ]
                 }
             }
@@ -230,7 +201,7 @@ module.exports = function(grunt) {
         
         bower_concat: {
             scripts: {
-                dest: '<%= config.buildPath %>/js/vendors.js',
+                dest: 'tmp/vendors.js',
                 exclude: [
                     'fontawesome', 
                     'html5shiv', 
@@ -302,7 +273,6 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-connect");
     grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-bower-concat");
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks("grunt-contrib-handlebars");
@@ -312,8 +282,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     
-    grunt.registerTask('default', ["handlebars", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
+    grunt.registerTask('default', ["handlebars", "compass", "bower_concat", "uglify", "cssmin", "imagemin", "copy", "clean", "connect", "watch"]);
     
-    grunt.registerTask('build', ["handlebars", "compass", "bower_concat", "concat", "uglify", "cssmin", "imagemin", "copy", "clean"]);
+    grunt.registerTask('build', ["handlebars", "compass", "bower_concat", "uglify", "cssmin", "imagemin", "copy", "clean"]);
     
 };
