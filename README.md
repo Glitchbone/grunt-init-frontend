@@ -78,7 +78,7 @@ existing files.
 
 **[Adrien Glitchbone](http://github.com/Glitchbone)**
 
-+ [https://twitter.com/AdrienROOTabaga](https://twitter.com/glitchbone)
++ [https://twitter.com/glitchbone](https://twitter.com/glitchbone)
 + [http://github.com/Glitchbone](http://github.com/Glitchbone)
 
 [grunt]: http://gruntjs.com
